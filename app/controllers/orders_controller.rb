@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   def index
     orders = Order.all.order(:id)
     if orders.length > 0
-      render json: orders
+      render json: orders.as_json
     else
       render json: { error: "You have no orders!" }
     end
@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
   def show
     order = Order.find_by(id: params["id"])
     if order.user == current_user
-      render json: order
+      render json: order.as_json
     else
       render json: { error: "You can only view your own orders" }, status: :unauthorized
     end
@@ -33,8 +33,10 @@ class OrdersController < ApplicationController
       tax: tax,
       total: total
     )
-    order.save
-    render json: order.as_json
+    if order.user == current_user
+      render json: order.as_json
+    else
+      render json: { error: "You must be logged in to place an order" }, status: :unauthorized
   end
 
 end
