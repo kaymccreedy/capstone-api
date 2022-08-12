@@ -35,7 +35,8 @@ class OrdersController < ApplicationController
       tax: tax,
       total: total
     )
-    if order.user == current_user
+    if current_user
+      order.save
       render json: order.as_json
     else
       render json: { error: "You must be logged in to place an order" }, status: :unauthorized
