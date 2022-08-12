@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
 
   def create
     product = Product.find_by(id: params["product_id"])
-    
+
     subtotal = product.price
     tax = subtotal * 0.09
     total = subtotal + tax
@@ -33,6 +33,8 @@ class OrdersController < ApplicationController
       tax: tax,
       total: total
     )
+    order.save
+    render json: order.as_json
   end
 
 end
