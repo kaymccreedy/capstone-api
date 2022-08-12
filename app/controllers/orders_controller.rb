@@ -1,11 +1,13 @@
 class OrdersController < ApplicationController
 
   def index
-    orders = Order.all.order(:id)
-    if orders.length > 0
+    orders = Order.where(user_id: current_user)
+    if orders.length > 0 && current_user
       render json: orders.as_json
-    else
+    elsif current_user
       render json: { error: "You have no orders!" }
+    else
+      render json: { error: "You must be logged in to view orders" }, status: :unauthorized
     end
   end
 
@@ -37,6 +39,7 @@ class OrdersController < ApplicationController
       render json: order.as_json
     else
       render json: { error: "You must be logged in to place an order" }, status: :unauthorized
+    end
   end
 
 end
