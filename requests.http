@@ -1,3 +1,5 @@
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NjEwMjE2NTd9.hMpPit2Wn4Q0rdHg3Lc1LHmuIq6bt_AGpwBUpnUX3GY
+
 # Users
 
 ### Users Create
@@ -5,8 +7,8 @@ POST http://localhost:3000/users.json
 Content-Type: application/json
 
 {
-  "name": "Kay",
-  "email": "kay@example.com",
+  "name": "dude",
+  "email": "dude@example.com",
   "password": "password",
   "password_confirmation": "password"
 }
@@ -20,13 +22,9 @@ POST http://localhost:3000/sessions.json
 Content-Type: application/json
 
 {
-  "email": "kay@example.com",
+  "email": "dude@example.com",
   "password": "password"
 }
-
-#JWT
-
-@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NjEwMTg2MTJ9.wO1A0WzEyiKO9aWENgcW6O_AbLhm9-BThVoLAMaKQ8I
 
 
 
@@ -56,6 +54,6 @@ Authorization: Bearer {{jwt}}
 Content-Type: application/json
 
 {
-	"product_id": 3,
+	"product_id": 4,
 	"quantity": 5
 }
