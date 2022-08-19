@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.where(user_id: current_user)
     if @orders.length > 0 && current_user
-      render json: orders.as_json
+      render template: "orders/index"
     elsif current_user
       render json: { error: "You have no orders!" }
     else
@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find_by(id: params["id"])
     if @order.user == current_user
-      render json: order.as_json
+      render template: "orders/show"
     else
       render json: { error: "You can only view your own orders" }, status: :unauthorized
     end
@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
     )
     if current_user
       @order.save
-      render json: order.as_json
+      render template: "order/show"
     else
       render json: { error: "You must be logged in to place an order" }, status: :unauthorized
     end
