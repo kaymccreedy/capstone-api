@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
 
   def index
-    orders = Order.where(user_id: current_user)
-    if orders.length > 0 && current_user
+    @orders = Order.where(user_id: current_user)
+    if @orders.length > 0 && current_user
       render json: orders.as_json
     elsif current_user
       render json: { error: "You have no orders!" }
@@ -12,8 +12,8 @@ class OrdersController < ApplicationController
   end
 
   def show
-    order = Order.find_by(id: params["id"])
-    if order.user == current_user
+    @order = Order.find_by(id: params["id"])
+    if @order.user == current_user
       render json: order.as_json
     else
       render json: { error: "You can only view your own orders" }, status: :unauthorized
@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
     tax = subtotal * 0.09
     total = subtotal + tax
 
-    order = Order.new(
+    @order = Order.new(
       user_id: current_user.id,
       product_id: params["product_id"],
       quantity: params["quantity"],
@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
       total: total
     )
     if current_user
-      order.save
+      @order.save
       render json: order.as_json
     else
       render json: { error: "You must be logged in to place an order" }, status: :unauthorized
