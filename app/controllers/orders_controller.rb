@@ -13,10 +13,10 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find_by(id: params["id"])
-    if @order.user == current_user
+    if @order
       render template: "orders/show"
     else
-      render json: { error: "You can only view your own orders" }, status: :unauthorized
+      render json: { error: "No order found" }, status: :unauthorized
     end
   end
 
@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
     )
     if current_user
       @order.save
-      render template: "order/show"
+      render template: "orders/show"
     else
       render json: { error: "You must be logged in to place an order" }, status: :unauthorized
     end

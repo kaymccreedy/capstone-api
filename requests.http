@@ -1,0 +1,61 @@
+# Users
+
+### Users Create
+POST http://localhost:3000/users.json
+Content-Type: application/json
+
+{
+  "name": "Kay",
+  "email": "kay@example.com",
+  "password": "password",
+  "password_confirmation": "password"
+}
+
+
+
+# Sessions
+
+### Sessions Create
+POST http://localhost:3000/sessions.json
+Content-Type: application/json
+
+{
+  "email": "kay@example.com",
+  "password": "password"
+}
+
+#JWT
+
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NjEwMTg2MTJ9.wO1A0WzEyiKO9aWENgcW6O_AbLhm9-BThVoLAMaKQ8I
+
+
+
+# Products
+
+### Products Index
+GET http://localhost:3000/products.json
+
+### Products Show
+GET http://localhost:3000/products/1.json
+
+
+
+# Orders
+
+### Orders Index
+GET http://localhost:3000/orders.json
+Authorization: Bearer {{jwt}}
+
+### Orders Show
+GET http://localhost:3000/orders/6.json
+Authorization: Bearer {{jwt}}
+
+### Orders Create
+POST http://localhost:3000/orders.json
+Authorization: Bearer {{jwt}}
+Content-Type: application/json
+
+{
+	"product_id": 3,
+	"quantity": 5
+}
