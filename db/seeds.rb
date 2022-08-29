@@ -8,7 +8,7 @@ Product.create(name: "Flower", description: "flower", price: 0, size: "demo size
 Product.create(name: "Bee", description: "bee", price: 0, size: "demo size", print_type: "digital")
 Product.create(name: "Bolts", description: "bolts", price: 0, size: "demo size", print_type: "digital")
 Product.create(name: "Rock Wall", description: "rock wall", price: 0, size: "demo size", print_type: "digital")
-Image.create(product_id: 1, name: "Shell", description: "shell", url: "https://live.staticflickr.com/65535/52297242829_5c9ead51da_k.jpg")
+Image.create(product_id: 1, name: "Shell", description: "image of shell", url: "https://live.staticflickr.com/65535/52297242829_5c9ead51da_k.jpg")
 Image.create(product_id: 2, name: "Paint Square", description: "paint square", url: "https://live.staticflickr.com/65535/52295993622_b5cab4f219_k.jpg")
 Image.create(product_id: 3, name: "Desert Landscape", description: "desert landscape", url: "https://live.staticflickr.com/65535/52297242764_378eaaab1d_k.jpg")
 Image.create(product_id: 4, name: "Sunset Glass", description: "sunset glass", url: "https://live.staticflickr.com/65535/52296977491_21ee214562_k.jpg")

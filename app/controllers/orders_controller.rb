@@ -22,8 +22,9 @@ class OrdersController < ApplicationController
 
   def create
     product = Product.find_by(id: params["product_id"])
+    quantity = params["quantity"].to_i
 
-    subtotal = product.price
+    subtotal = product.price * quantity
     tax = subtotal * 0.09
     total = subtotal + tax
 
@@ -33,11 +34,11 @@ class OrdersController < ApplicationController
       quantity: params["quantity"],
       subtotal: subtotal,
       tax: tax,
-      total: total
+      total: total,
     )
-    if current_user
+    if current_user && quantity.to_i > 0
       @order.save
-      render template: "orders/show"
+      render json: @order.as_json
     else
       render json: { error: "You must be logged in to place an order" }, status: :unauthorized
     end
