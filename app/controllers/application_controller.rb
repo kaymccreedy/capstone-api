@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  include ActionView::Helpers::NumberHelper
   
   def current_user
     auth_headers = request.headers["Authorization"]
