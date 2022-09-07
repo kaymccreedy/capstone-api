@@ -1,6 +1,7 @@
 {
   id: @order.id,
-  product_id: @order.product.id,
+  product_id: @order.product_id,
+  photo_id: @order.photo_id,
   quantity: @order.quantity,
   subtotal: @order.subtotal,
   tax: @order.tax,

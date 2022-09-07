@@ -4,6 +4,5 @@
   price: @product.price,
   description: @product.description,
   print_type: @product.print_type,
-  size: @product.size,
-  images: @product.images
+  size: @product.size
 }

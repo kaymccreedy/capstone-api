@@ -4,9 +4,7 @@ class OrdersController < ApplicationController
     @orders = Order.where(user_id: current_user)
     if @orders.length > 0 && current_user
       render template: "orders/index"
-    elsif current_user
-      render json: { error: "You have no orders!" }
-    else
+    elsif !current_user
       render json: { error: "You must be logged in to view orders" }, status: :unauthorized
     end
   end
@@ -30,6 +28,7 @@ class OrdersController < ApplicationController
 
     @order = Order.new(
       user_id: current_user.id,
+      photo_id: params["photo_id"],
       product_id: params["product_id"],
       quantity: params["quantity"],
       subtotal: subtotal,

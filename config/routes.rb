@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   post "/sessions" => "sessions#create"
 
+  get "/photos" => "photos#index"
+  get "/photos/:id" => "photos#show"
+
   get "/products" => "products#index"
   get "/products/:id" => "products#show"
 

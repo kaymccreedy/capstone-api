@@ -1,0 +1,6 @@
+{
+  id: @photo.id,
+  name: @photo.name,
+  description: @photo.description,
+  images: @photo.images
+}
